@@ -15,6 +15,7 @@ Fig. 3. Placenta and fetal brain segmentation.
 Some important required packages include:
 * [Pytorch][torch_link] version >=0.4.1.
 * Visdom
+* Python == 3.7 
 * Some basic python packages such as Numpy.
 
 Follow official guidance to install [Pytorch][torch_link].
@@ -36,12 +37,12 @@ python create_folder.py
 ```
 
 
-2. To train CA-Net in ISIC 2018, run:
+2. To train CA-Net in ISIC 2018 (taking 1st-fold validation for example), run:
 ```
-python main.py --data ISIC2018 --id Comp_Atten_Unet
+python main.py --data ISIC2018 --val_folder folder1 --id Comp_Atten_Unet
 ```
 
-3. To evaluate the trained model in ISIC 2018 (testing the 0th-fold validation for example), run:
+3. To evaluate the trained model in ISIC 2018 (we added a test data in folder0, testing the 0th-fold validation for example), run:
 ```
 python validation.py --data ISIC2018 --val_folder folder0 --id Comp_Atten_Unet
 ```

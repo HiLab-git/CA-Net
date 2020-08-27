@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-#  these code is for ISIC 2018: Skin Lesion Analysis Towards Melanoma Detection
+# these code is for ISIC 2018: Skin Lesion Analysis Towards Melanoma Detection
 # -*- coding: utf-8 -*-
 # @Author  : Ran Gu
 
@@ -10,7 +10,7 @@ from skimage import io
 from PIL import Image
 
 root_dir = '/gr/Skin segmentation/'                # change it in your saved original data path
-save_dir = 'data/ISIC2018_Task1_npy_all'
+save_dir = './data/ISIC2018_Task1_npy_all'
 
 
 if __name__ == '__main__':
@@ -20,6 +20,10 @@ if __name__ == '__main__':
     random.shuffle(filename)
     labname = [filename[x].replace('ISIC2018_Task1-2_Training_Input', 'ISIC2018_Task1_Training_GroundTruth'
                                    ).replace('.jpg', '_segmentation.png') for x in range(len(filename))]
+
+    if not os.path.isdir(save_dir):
+        os.makedirs(save_dir+'/image')
+        os.makedirs(save_dir+'/label')
 
     for i in range(len(filename)):
         fname = filename[i].rsplit('/', maxsplit=1)[-1]

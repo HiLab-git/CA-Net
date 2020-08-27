@@ -86,7 +86,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description='U-net add Attention mechanism for biomedical Dataset')
     # Model related arguments
-    parser.add_argument('--id', default='Unet_fetus',
+    parser.add_argument('--id', default='Comp_Atten_Unet',
                         help='a name for identitying the model. Choose from the following options: Unet_fetus')
     # Path related arguments
     parser.add_argument('--root_path', default='./data/ISIC2018_Task1_npy_all',

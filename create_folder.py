@@ -22,8 +22,12 @@ def create_5_floder(folder, save_foler):
         else:
             valid_list = file_list[-4:] + file_list[:256]
             train_list = file_list[256:i*518]
+
+        if not os.path.isdir(save_foler + '/folder'+str(i+1)):
+            os.makedirs(save_foler + '/folder'+str(i+1))
+
         text_save(os.path.join(save_foler, 'folder'+str(i+1), 'folder'+str(i+1)+'_train.list'), train_list)
-        text_save(os.path.join(save_foler, 'folder'+str(i+1), 'folder'+str(i+1)+'_valid.list'), valid_list)
+        text_save(os.path.join(save_foler, 'folder'+str(i+1), 'folder'+str(i+1)+'_validation.list'), valid_list)
         text_save(os.path.join(save_foler, 'folder'+str(i+1), 'folder'+str(i+1)+'_test.list'), test_list)
 
 

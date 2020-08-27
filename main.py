@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+# these code is for ISIC 2018: Skin Lesion Analysis Towards Melanoma Detection
 # -*- coding: utf-8 -*-
 # @Author  : Ran Gu
 import os
@@ -420,7 +421,7 @@ if __name__ == '__main__':
                         help='a name for identitying the model. Choose from the following options: Unet')
 
     # Path related arguments
-    parser.add_argument('--root_path', default='./',
+    parser.add_argument('--root_path', default='./data/ISIC2018_Task1_npy_all',
                         help='root directory of data')
     parser.add_argument('--ckpt', default='./saved_models',
                         help='folder to output checkpoints')
@@ -432,7 +433,7 @@ if __name__ == '__main__':
                         help='epoch to start training. useful if continue from a checkpoint')
     parser.add_argument('--batch_size', type=int, default=16, metavar='N',
                         help='input batch size for training (default: 12)')
-    parser.add_argument('--lr_rate', type=float, default=1e-3, metavar='LR',
+    parser.add_argument('--lr_rate', type=float, default=1e-4, metavar='LR',
                         help='learning rate (default: 0.001)')
     parser.add_argument('--num_classes', default=2, type=int,
                         help='number of classes')
