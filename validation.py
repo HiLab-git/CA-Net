@@ -95,7 +95,7 @@ if __name__ == '__main__':
                         help='folder to output checkpoints')
     parser.add_argument('--save', default='./result',
                         help='folder to outoput result')
-    parser.add_argument('--batch_size', type=int, default=3, metavar='N',
+    parser.add_argument('--batch_size', type=int, default=1, metavar='N',
                         help='input batch size for training (default: 16)')
     parser.add_argument('--num_classes', default=2, type=int,
                         help='number of classes')
