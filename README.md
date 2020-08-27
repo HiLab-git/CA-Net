@@ -1,49 +1,64 @@
-### CA-Net: Comprehensive attention Comvolutional Neural Networks for Explainable Medical Image Segmentation
-This repository provides the code for "CA-Net: Comprehensive attention Comvolutional Neural Networks for Explainable Medical Image Segmentation". The paper can be found at: 
+## CA-Net: Comprehensive Attention Comvolutional Neural Networks for Explainable Medical Image Segmentation
+This repository provides the code for "CA-Net: Comprehensive attention Comvolutional Neural Networks for Explainable Medical Image Segmentation".
 
-![mg_net](./pictures/canet.png)
+![mg_net](./pictures/canet_framework.png)
 Fig. 1. Structure of CA-Net.
 
-![uncertainty](./pictures/uncertainty.png)
+![uncertainty](./pictures/skin_results.png)
 Fig. 2. Skin lesion segmentation.
 
-![refinement](./pictures/refinement.png)
+![refinement](./pictures/fetal_mri_results.png)
 
 Fig. 3. Placenta and fetal brain segmentation.
 
-### Requirements
+### Requirementss
 Some important required packages include:
 * [Pytorch][torch_link] version >=0.4.1.
+* Visdom
+* Some basic python packages such as Numpy.
 
-Follow official guidance to install [Pytorch][torch_link]. Install the other required packages by:
-```
-pip install -r requirements.txt
-```
+Follow official guidance to install [Pytorch][torch_link].
 
 [torch_link]:https://pytorch.org/
 
-### How to use
-After installing the required packages, add the path of `UGIR` to the PYTHONPATH environment variable. 
-### Demo of MG-Net
-1. Run the following commands to use MG-Net for simultanuous segmentation and uncertainty estimation. 
+## Usages
+### For skin lesion segmentation
+1. First, you can download the dataset at [ISIC 2018][data_link]. We only used ISIC 2018 task1 training dataset, To preprocess the dataset and save as ".npy", run:
+
+[data_link]:https://challenge.isic-archive.com/data#2018
+
 ```
-cd uncertainty_demo
-python ../util/custom_net_run.py test config/mgnet.cfg
+python isic_preprocess.py 
 ```
-2. The results will be saved to `uncertainty_demo/result`. To get a visualization of the uncertainty estimation in an example slice, run: 
+2. For conducting 5-fold cross-validation, split the preprocessed data into 5 fold and save their filenames. run:
 ```
-python show_uncertanty.py
+python create_folder.py 
 ```
 
-### Demo of I-DRLSE
-To see a demo of I-DRLSE, run the following commands:
-```
-cd util/level_set
-python demo/demo_idrlse.py 
-```
-The result should look like the following.
-![i-drlse](./pictures/i-drlse.png)
 
-### Copyright and License
-Copyright (c) 2020, University of Electronic Science and Technology of China.
-All rights reserved. This code is made available as open-source software under the BSD-3-Clause License.
+2. To train CA-Net in ISIC 2018, run:
+```
+python main.py --data ISIC2018 --id Comp_Atten_Unet
+```
+
+3. To evaluate the trained model in ISIC 2018 (testing the 0th-fold validation for example), run:
+```
+python validation.py --data ISIC2018 --val_folder folder0 --id Comp_Atten_Unet
+```
+Our experimental results are shown in the table:
+![refinement](./pictures/skin_segmentation_results_table.png)
+
+4. You can save the attention weight map in the middle step of the network to '/result' folder. Visualizing the attention weight above the original images, run:
+```
+python show_fused_heatmap.py
+```
+Visualzation of spatial attention weight map:
+![refinement](./pictures/spatial_atten_weight.png)
+
+Visualzation of scale attention weight map:
+![refinement](./pictures/scale_atten_weight.png)
+
+## Acknowledgement
+Part of the code is revised from [Attention-Gate-Networks][AG].
+
+[AG]:https://github.com/ozan-oktay/Attention-Gated-Networks
