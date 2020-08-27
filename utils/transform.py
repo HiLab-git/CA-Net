@@ -20,8 +20,8 @@ _pil_interpolation_to_str = {
 
 
 def ISIC2018_transform(sample, train_type):
-    image, label = Image.fromarray(np.uint8(sample['image']*255), mode='RGB'),\
-                   Image.fromarray(np.uint8(sample['label']*255), mode='L')
+    image, label = Image.fromarray(np.uint8(sample['image']), mode='RGB'),\
+                   Image.fromarray(np.uint8(sample['label']), mode='L')
 
     if train_type == 'train':
         image, label = randomcrop(size=(224, 300))(image, label)

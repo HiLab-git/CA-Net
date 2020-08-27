@@ -2,12 +2,13 @@ import os
 import numpy
 from random import shuffle
 
-PATH = 'data/ISIC2018_Task1_npy_all/image'
+PATH = './data/ISIC2018_Task1_npy_all/image'
 SAVE_PATH = './Datasets'
 
 
 def create_5_floder(folder, save_foler):
     file_list = os.listdir(folder)
+    shuffle(file_list)
 
     for i in range(5):
         if i != 0:
