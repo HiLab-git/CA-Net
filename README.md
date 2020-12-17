@@ -1,6 +1,8 @@
 ## CA-Net: Comprehensive Attention Comvolutional Neural Networks for Explainable Medical Image Segmentation
 This repository provides the code for "CA-Net: Comprehensive attention Comvolutional Neural Networks for Explainable Medical Image Segmentation". Our work now is available on [Arxiv][paper_link]. Our work is accepted by [TMI][tmi_link].
+
 [paper_link]:https://arxiv.org/pdf/2009.10549.pdf
+
 [tmi_link]:https://ieeexplore.ieee.org/document/9246575
 
 ![mg_net](./pictures/canet_framework.png)
